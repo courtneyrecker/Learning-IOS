@@ -1,0 +1,161 @@
+var todo: [String] = ["Finish collections course", "Buy groceries", "Respond to emails", "Pick up dry cleaning", "Order books online", "Mow the lawn"]
+
+
+print(todo[0])
+print(todo[1])
+print(todo[2]) // solving this using a Loop below
+
+for task in todo {
+    print(task)
+}
+
+// Ranges
+
+for number in 1...10 {
+    print ("\(number) times 5 is equal to \(number * 5)")
+}
+
+
+// While loop
+
+var x = 0
+while x <= 20 {
+   print(x)
+    x += 1
+}
+
+var index = 0
+while index < todo.count {
+    print(todo[index])
+    index += 1
+}
+
+// Repeat While
+
+var counter = 1
+
+while counter < 1 {
+    print ("I'm inside the while loop")
+    counter += 1
+}
+
+repeat {
+    print ("I'm inside the repeat loop!")
+counter += 1
+} while counter < 1
+
+// If Statements
+var temperature = 9
+
+if temperature < 12 {
+    print("It's getting cold. Wear a thicker jacket.")
+} else if temperature < 18 {
+    print("It's getting chilly. I recommend wearing a light sweater.")
+}
+    else {
+    print("It feels great outside! A tshirt will do.")
+}
+
+// Logical Operators
+/*
+ &&, both need to be true
+ || mean or, only one has to be true to make it true
+ !a not operator, true statement false and vise versa
+ */
+
+
+
+if temperature > 7 && temperature < 12 {
+    print("Might want to wear a scarf with that jacket.")
+    
+}
+
+var isRaining = true
+var isSnowing = false
+
+if isRaining || isSnowing {
+    print("Get out those boots!")
+}
+
+if !isRaining {
+    print("yay the sun is out!")
+}
+
+if isRaining && isSnowing && temperature < 2 {
+    print("put some gloves on!")
+}
+
+if (isRaining || isSnowing) && temperature < 2 {
+    print("Get the leather gloves out!")
+}
+
+// Switch Statement- considers a vlue so you can compare it against several different patterns
+/* Switch VALUE TO CONSIDER {
+ case VALUE 1: RESPOND TO VALUE1
+ case VALUE 2: RESPOND TO VALUE2
+ default: do something else
+ }
+ */
+
+let airportCodes = ["LGA", "LHR", "CDG", "HKG", "DXB", "LGW", "JFK", "ORY"]
+
+for airportCode in airportCodes {
+        switch airportCode {
+        case "LGA", "JFK": print("New York")
+        case "LHR", "LGW": print("London")
+        case "CDG", "ORY": print("Paris")
+        case "HKG": print("Hong Kong")
+        default: print("I don't know which city that airport is in!")
+    }
+}
+
+import GameKit
+
+let randomTemperature = GKRandomSource.sharedRandom().nextInt(upperBound: 150)
+
+switch randomTemperature {
+case 0..<32: print("Forget clothes, you are basically a popsicle!")
+case 32..<45: print("It's quite cold. You'll need a jacket")
+case 45..<70: print("I recomment wearing a light sweater")
+case 70...100: print("It's quite hot! T-shirt weather!")
+default: print("Don't even bother to go out!")
+}
+
+
+// Coding Challenge Example to append to the like value
+
+var europeanCapitals: [String] = []
+var asianCapitals: [String] = []
+var otherCapitals: [String] = []
+
+let world = [
+    "BEL": "Brussels",
+    "LIE": "Vaduz",
+    "BGR": "Sofia",
+    "USA": "Washington D.C.",
+    "MEX": "Mexico City",
+    "BRA": "Brasilia",
+    "IND": "New Delhi",
+    "VNM": "Hanoi"]
+
+for (key, value) in world {
+    // Enter your code below
+    switch key {
+    case "BEL", "LIE", "BGR": europeanCapitals.append(value)
+    case "IND", "VNM": asianCapitals.append(value)
+    default: otherCapitals.append(value)
+    }
+    // End code
+}
+
+for i in 1...100 {
+    if (i % 3 == 0) && (i % 5 == 0) {
+        print("FizzBuzz")
+    } else if (i % 3 == 0) {
+        print("Fizz")
+    } else if (i % 5 == 0) {
+        print("Buzz")
+    } else {
+        print(i)
+    }
+}
