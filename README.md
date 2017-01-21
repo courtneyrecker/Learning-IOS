@@ -1,2 +1,4 @@
 # Learning-IOS
-My documents from Treehouse learning
+My XCode documents from Treehouse learning.
+
+Still in development. 
