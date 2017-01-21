@@ -1,0 +1,54 @@
+// Pattern Matching & Nil Coalescing Operator
+
+enum Coin {
+    case penny
+    case nickel
+    case dime
+    case quarter
+}
+
+let wallet : [Coin] = [.penny, .nickel, .dime, .dime, .quarter, .quarter, .quarter, .dime, .nickel, .penny, .penny, .dime, .quarter, .nickel]
+
+var count = 0
+
+for coin in wallet {
+    switch coin {
+    case .quarter: count += 1
+    default: continue
+    }
+}
+
+count = 0
+
+for case .quarter in wallet {
+    count += 1
+}
+
+for coin in wallet {
+    if case .nickel = coin {
+        print("Not so much money")
+    } else if case .dime = coin {
+        print("Better than nothing")
+    }
+}
+
+
+let someOptional: Int? = 42
+
+
+if case .some(let x) = someOptional {
+    print(x)
+}
+
+
+// Nil Coalescing Operator
+
+let firstName: String? = "Pasan"
+let username = "Pasanpr"
+
+
+let displayName = firstName ?? username
+
+print(displayName)
+
+
