@@ -1,0 +1,207 @@
+let x1 = 0
+let y1 = 0
+let coordinate1: (x: Int, y: Int) = (0,0)
+coordinate1.x
+
+struct Point {
+    let x: Int
+    let y: Int
+    
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+        
+    }
+   /// Returns the surrounding points in range of 
+     /// the current one
+    func points(inRange range: Int = 1) -> [Point] {
+        var results = [Point]()
+        
+        let lowerBoundOfXRange = x - range
+        let upperBoundOfXRange = x + range
+        
+        let lowerBoundOfYRange = y - range
+        let upperBoundOfYRange = y + range
+        
+        for xCoordinate in lowerBoundOfXRange...upperBoundOfXRange {
+            for yCoordinate in lowerBoundOfXRange...upperBoundOfXRange {
+                let coordinatePoint = Point(x: xCoordinate, y: yCoordinate)
+                results.append(coordinatePoint)
+            }
+        }
+        
+        return results
+    }
+}
+
+let coordinatePoint = Point(x: 0, y: 0)
+coordinatePoint.points()
+
+
+//Enemies
+
+class Enemy {
+    var life: Int = 2
+    let position: Point
+    
+    init(x: Int, y: Int) {
+        self.position = Point(x: x, y: y)
+    }
+    func decreaseLife(by factor: Int) {
+    life -= factor
+    
+    }
+}
+
+class SuperEnemy: Enemy {
+   
+    let isSuper: Bool = true
+    
+    override init(x: Int, y: Int) {
+        super.init(x: x, y: y)
+        self.life = 50
+    }
+        
+    }
+
+
+
+
+
+
+
+// Towers
+
+class Tower {
+    let position: Point
+    var range: Int = 1
+    var strength: Int = 1
+    
+    init(x: Int, y: Int) {
+        self.position = Point(x: x, y: y)
+        
+    }
+
+func fire(at enemy: Enemy) {
+    if isInRange(of: enemy) {
+        enemy.decreaseLife(by: strength)
+        print("Gotcha")
+        
+    } else {
+        print("Darn! Out of range!")
+    }
+    
+}
+    func isInRange(of enemy: Enemy) -> Bool {
+        let availablePositions = position.points(inRange: range)
+        
+        for point in availablePositions {
+            if point.x == enemy.position.x && point.y == enemy.position.y {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+class LaserTower: Tower {
+    
+    override init(x: Int, y: Int) {
+        super.init(x: x, y: y)
+        self.range = 100
+        self.strength = 100
+    }
+    
+    override func fire(at enemy: Enemy) {
+        while enemy.life >= 0 {
+            enemy.decreaseLife(by: strength)
+        }
+        print("Enemy destroyed!")
+    }
+}
+
+let tower = Tower(x: 0, y: 0)
+let enemy = Enemy(x: 1, y: 1)
+let superEnemy = SuperEnemy(x: 1, y: 1)
+let laserTower = LaserTower(x: 2, y: 2)
+
+
+
+
+tower.fire(at: enemy)
+tower.fire(at: superEnemy)
+laserTower.fire(at: enemy)
+laserTower.fire(at: superEnemy)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// example, getting a name
+
+struct Person {
+    let firstName: String
+    let lastName: String
+    
+    func fullName() -> String {
+        return "\(firstName) \(lastName)"
+    }
+}
+
+let aPerson = Person(firstName: "Courtney", lastName: "Recker")
+let myFullName = aPerson.fullName()
+
+/* Your task is to write a custom initializer method for the object. Using the initializer assign values to the first four properties. Using the values assigned to those properties create a value for the description property that is a string representation of the color object.
+
+For example, given the values 86.0 for red, 191.0 for green, 131.0 for blue and 1.0 for alpha, each of the stored properties should hold these values and the description property should look like this:
+
+"red: 86.0, green: 191.0, blue: 131.0, alpha: 1.0"
+
+Note: Init methods typically list parameters in the same order of property declaration. For this task, stick to the order red,green,blue,alpha.
+ */
+
+struct RGBColor {
+    let red: Double
+    let green: Double
+    let blue: Double
+    let alpha: Double
+    
+    let description: String
+
+// Add your code below
+    init(red: Double, green: Double, blue: Double, alpha: Double){
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.alpha = alpha
+        
+        self.description = "red: \(red), green: \(green), blue: \(blue), alpha: \(alpha)"
+}
+}
+
+
