@@ -1,0 +1,107 @@
+// Collections and Control Flow
+
+// Arrays
+
+var todo: [String] = ["Finish collections course", "Buy groceries", "Respond to emails"]
+
+// Add new item to end of array usig append method
+todo.append("Pick up dry cleaning")
+
+// Concatenating two arrays
+[1,2,3] + [4]
+
+// Concatenate array containing tring literal to todo
+todo = todo + ["Order book online"]
+// Performing the same operaion using the unary addition operator
+todo += ["Order book online"]
+
+// Immutable Arrays
+
+let secondTaskList = ["Mow the lawn"]
+ // secondTaskList.append("Pay bills") Error!!
+ // secondTaskList += ["someValue"] Error!!
+
+// Reading From Arrays -- called subscripting 0,1,2,3 and so on
+
+todo[0]
+let firstTask = todo[0]
+todo[2]
+
+// Modifying Existing Values in an Array
+// (Mutating an array)
+
+todo[4] = "Brush teeth" // changing the value of the fifth item in the list
+
+// Insert Using Indexes
+todo
+todo.insert("Watch TV", at: 2) // inserts Watch TV in between buy groceries and respond to emails
+
+
+// Removing Items from Arrays
+todo //before
+todo.remove(at: 2) // remove 3rd item
+todo // after
+
+todo.count
+
+// Dealing with Non Existent Data
+todo[0]
+todo[5]
+// todo[6] Crash, because I don't have 7 items in my list, it's out of the index
+
+
+
+
+
+
+
+/*
+ -----------
+ Dictionaries
+ -----------
+ */
+
+/*  
+        Airport Code (Key)          Airport Name (Value)
+        LGA                         La Guardia
+        LHR                         Heathrow
+        CDG                         Charles de Gualle
+        HKG                         Hong Kong International
+        DXB                         Dubai International
+ 
+ */
+//                  String to String
+var airportCodes: [String: String] = ["LGA": "La Guardia",
+ "LHR": "Heathrow",
+ "CDG": "Charles De Gualle",
+ "HKG":"Hong Kong International",
+ "DXB": "Dubai International"
+]
+let currentWeather = ["temperature": 75.0]
+
+// Reading from a dictionary
+
+airportCodes["LGA"]
+airportCodes["HKG"]
+
+// Inserting Key Value Pairs
+
+airportCodes["SYD"] = "Sydney Airport"
+airportCodes["LGA"] = "La Guardia International Airport" //Changing a current value
+
+airportCodes.updateValue("Dublin Airport", forKey: "DUB")
+
+// Removing Key Value Pairs
+
+airportCodes["DXB"] = nil
+airportCodes.removeValue(forKey: "CDG")
+airportCodes //after removing the above two
+
+// Dealing with Non Existent Data
+
+let newYorkAirport = airportCodes["LGA"]
+let orlandoAirport = airportCodes["MCO"]
+
+// arrays will always crash if the value doesnt exist, dictionaries will return nil (which is a lot safer)
+
+
